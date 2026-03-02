@@ -21,6 +21,11 @@ const CONFIG = {
     email:       "contact@olivier-renovation.fr",
     siret:       "",                         // Optionnel
     assurance:   "Décennale n°XXXXXXXX",    // Optionnel
+
+    // Logo : chemin vers votre image (laisser "" pour afficher le texte à la place)
+    // Déposez votre fichier dans photos/ puis indiquez le chemin ici
+    // Exemples : "photos/logo.png"  "photos/logo.svg"
+    logo:        "",
   },
 
   // ──────────────────────────────────────────────

@@ -61,8 +61,11 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--white);
+      display: flex;
+      align-items: center;
     }
     .lp-logo span { color: var(--accent); }
+    .lp-logo img { height: 40px; width: auto; display: block; }
 
     .lp-tel-btn {
       display: flex;
@@ -415,7 +418,7 @@
   <header class="lp-header">
     <div class="container">
       <div class="lp-header-inner">
-        <div class="lp-logo">Olivier <span>Rénovation</span></div>
+        <div class="lp-logo" id="lp-logo">Olivier <span>Rénovation</span></div>
         <a href="tel:+336XXXXXXXX" class="lp-tel-btn" id="header-tel">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/>
@@ -615,6 +618,12 @@
     document.addEventListener('DOMContentLoaded', () => {
       const C = window.SITE_CONFIG;
       if (!C) return;
+
+      // Logo
+      if (C.company.logo) {
+        const lpLogo = document.getElementById('lp-logo');
+        if (lpLogo) lpLogo.innerHTML = `<img src="${C.company.logo}" alt="${C.company.name}" />`;
+      }
 
       // Téléphones
       document.querySelectorAll('[href^="tel:"]').forEach(el => el.href = C.company.phoneHref);

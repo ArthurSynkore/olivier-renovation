@@ -106,8 +106,12 @@
       font-weight: 700;
       color: var(--white);
       letter-spacing: -.3px;
+      display: flex;
+      align-items: center;
     }
     .nav-logo span { color: var(--accent); }
+    .nav-logo img { height: 44px; width: auto; display: block; }
+    .footer-brand .nav-logo img { height: 48px; }
 
     .nav-links {
       display: flex;
@@ -952,7 +956,7 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <div class="nav-inner">
-        <a href="#" class="nav-logo">Olivier <span>Rénovation</span></a>
+        <a href="#" class="nav-logo" id="nav-logo">Olivier <span>Rénovation</span></a>
         <ul class="nav-links">
           <li><a href="#services">Services</a></li>
           <li><a href="#realisations">Réalisations</a></li>
@@ -1103,55 +1107,11 @@
         <h2 class="section-title reveal">Nos réalisations</h2>
         <p class="section-subtitle reveal">Chaque chantier est unique. Découvrez quelques-uns de nos travaux récents en Normandie.</p>
       </div>
-      <div class="gallery-grid reveal">
-        <div class="gallery-item">
-          <div class="gallery-placeholder" style="min-height:360px">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>Salon — peinture intérieure<br/>Remplacer par votre photo</span>
-          </div>
-          <div class="gallery-overlay"><span>Salon — peinture intérieure</span></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder" style="min-height:168px">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>Façade — ravalement</span>
-          </div>
-          <div class="gallery-overlay"><span>Façade — ravalement</span></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder" style="min-height:168px">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>Chambre — papier peint</span>
-          </div>
-          <div class="gallery-overlay"><span>Chambre — papier peint</span></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder" style="min-height:168px">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>Extérieur — volets & portail</span>
-          </div>
-          <div class="gallery-overlay"><span>Extérieur — volets & portail</span></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder" style="min-height:168px">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>Cuisine — rénovation</span>
-          </div>
-          <div class="gallery-overlay"><span>Cuisine — rénovation</span></div>
-        </div>
+      <div class="gallery-grid reveal" id="gallery-grid">
+        <!-- Chargé automatiquement depuis photos/realisations/ -->
       </div>
-      <p class="gallery-caption reveal">
-        💡 <em>Remplacez les placeholders par vos photos de chantier (remplacez les divs .gallery-placeholder par des balises &lt;img&gt;)</em>
+      <p class="gallery-caption reveal" id="gallery-caption" style="display:none">
+        💡 <em>Glissez vos photos dans <code>photos/realisations/</code>, commitez et pushez — elles apparaissent ici automatiquement.</em>
       </p>
     </div>
   </section>
@@ -1279,7 +1239,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <span class="nav-logo">Olivier <span>Rénovation</span></span>
+          <span class="nav-logo" id="footer-logo">Olivier <span>Rénovation</span></span>
           <p class="footer-desc">Artisan peintre qualifié en Normandie. Peinture intérieure & extérieure, ravalement, décoration. Devis gratuit.</p>
           <div class="footer-social" id="footer-social"></div>
         </div>
@@ -1388,9 +1348,92 @@
           .join('');
       }
 
+      // Logo image (navbar + footer)
+      if (C.company.logo) {
+        const logoImg = `<img src="${C.company.logo}" alt="${C.company.name}" />`;
+        const navLogo = document.getElementById('nav-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        if (navLogo) navLogo.innerHTML = logoImg;
+        if (footerLogo) footerLogo.innerHTML = logoImg;
+      }
+
+      // Galerie dynamique
+      loadGallery();
+
       // Déclencher les observers après génération du contenu
       initObservers();
     });
+
+    // ── Galerie : lecture du manifest ────────────────
+    function filenameToLabel(filename) {
+      return filename
+        .replace(/\.[^.]+$/, '')         // retire l'extension
+        .replace(/[-_]/g, ' ')           // tirets → espaces
+        .replace(/\b\w/g, c => c.toUpperCase()); // Maj première lettre de chaque mot
+    }
+
+    const PLACEHOLDER_SVG = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14
+             m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>`;
+
+    const PLACEHOLDER_LABELS = [
+      "Salon — peinture intérieure",
+      "Façade — ravalement",
+      "Chambre — papier peint",
+      "Extérieur — volets & portail",
+      "Cuisine — rénovation",
+    ];
+
+    async function loadGallery() {
+      const grid = document.getElementById('gallery-grid');
+      const caption = document.getElementById('gallery-caption');
+      if (!grid) return;
+
+      let files = [];
+      try {
+        const res = await fetch('photos/realisations/manifest.json');
+        if (res.ok) files = await res.json();
+      } catch { /* réseau indisponible → placeholders */ }
+
+      if (files.length === 0) {
+        // Afficher les placeholders par défaut
+        grid.innerHTML = PLACEHOLDER_LABELS.map((label, i) => {
+          const isFirst = i === 0;
+          const minH = isFirst ? '360px' : '168px';
+          const style = isFirst ? 'style="grid-column:span 2;grid-row:span 2"' : '';
+          return `
+            <div class="gallery-item" ${style}>
+              <div class="gallery-placeholder" style="min-height:${minH}">
+                ${PLACEHOLDER_SVG}
+                <span>${label}</span>
+              </div>
+              <div class="gallery-overlay"><span>${label}</span></div>
+            </div>`;
+        }).join('');
+        if (caption) caption.style.display = 'block';
+      } else {
+        // Afficher les vraies photos
+        grid.innerHTML = files.map((filename, i) => {
+          const label = filenameToLabel(filename);
+          const isFirst = i === 0;
+          const style = isFirst ? 'style="grid-column:span 2;grid-row:span 2"' : '';
+          const imgH = isFirst ? 'min-height:360px' : 'min-height:168px';
+          return `
+            <div class="gallery-item" ${style}>
+              <img src="photos/realisations/${filename}" alt="${label}" loading="lazy"
+                   style="width:100%;height:100%;object-fit:cover;display:block;${imgH}" />
+              <div class="gallery-overlay"><span>${label}</span></div>
+            </div>`;
+        }).join('');
+        if (caption) caption.style.display = 'none';
+      }
+
+      // Relancer les observers sur les nouveaux éléments
+      initObservers();
+    }
 
     // ── Scroll observer (animations reveal) ──────────
     function initObservers() {

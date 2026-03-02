@@ -1,0 +1,45 @@
+name: Générer le manifeste photos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "photos/realisations/**"
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Générer manifest.json
+        run: |
+          python3 - <<'EOF'
+          import os, json
+
+          folder = "photos/realisations"
+          exts   = {".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"}
+
+          files = sorted(
+              f for f in os.listdir(folder)
+              if os.path.splitext(f)[1] in exts
+          )
+
+          manifest_path = os.path.join(folder, "manifest.json")
+          with open(manifest_path, "w", encoding="utf-8") as fh:
+              json.dump(files, fh, ensure_ascii=False, indent=2)
+
+          print(f"✅ manifest.json généré avec {len(files)} photo(s) : {files}")
+          EOF
+
+      - name: Commit si changement
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add photos/realisations/manifest.json
+          git diff --staged --quiet && echo "Aucun changement." || \
+            git commit -m "chore: mise à jour manifest photos [skip ci]" && git push
