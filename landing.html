@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Peintre en Normandie — Devis Gratuit en 24h | Olivier Rénovation</title>
+
+  <!-- Google Ads conversion tracking placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script> -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Config -->
+  <script src="config.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:  #1B3A5C;
+      --accent:   #E8A020;
+      --light:    #F5F7FA;
+      --white:    #FFFFFF;
+      --text:     #2C3E50;
+      --muted:    #6B7280;
+      --red:      #dc2626;
+      --green:    #059669;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER BAR ── */
+    .lp-header {
+      background: var(--primary);
+      padding: 14px 0;
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    .lp-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .lp-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .lp-logo span { color: var(--accent); }
+
+    .lp-tel-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: background .2s;
+    }
+    .lp-tel-btn:hover { background: #c8891a; }
+
+    /* ── HERO SPLIT ── */
+    .lp-hero {
+      background: linear-gradient(135deg, #1B3A5C 0%, #0d2238 100%);
+      padding: 56px 0 0;
+      overflow: hidden;
+    }
+
+    .lp-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .lp-hero-left { padding-bottom: 56px; }
+
+    .lp-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(220,38,38,.2);
+      border: 1px solid rgba(220,38,38,.4);
+      color: #fca5a5;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .lp-urgency-dot {
+      width: 7px; height: 7px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse-dot 1.5s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    .lp-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 20px;
+    }
+    .lp-hero h1 em { font-style: normal; color: var(--accent); }
+
+    .lp-hero-sub {
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+
+    .lp-trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .lp-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.85);
+      padding: 7px 14px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 500;
+    }
+    .lp-badge span { color: var(--accent); font-size: 1rem; }
+
+    .lp-stars-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.6);
+      font-size: .88rem;
+    }
+    .lp-stars {
+      color: var(--accent);
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+    /* Formulaire dans le hero */
+    .lp-form-wrap {
+      background: var(--white);
+      border-radius: 16px 16px 0 0;
+      padding: 36px 32px 40px;
+      box-shadow: 0 -8px 40px rgba(0,0,0,.3);
+      margin-top: 8px;
+    }
+
+    .lp-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .lp-form-sub {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 24px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .lp-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      padding: 18px;
+      border: none;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      margin-top: 8px;
+      box-shadow: 0 4px 16px rgba(232,160,32,.4);
+    }
+    .lp-submit:hover { background: #c8891a; transform: translateY(-2px); }
+
+    .lp-guarantee {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .form-success, .form-error {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 500;
+      margin-top: 12px;
+      display: none;
+    }
+    .form-success { background: #d1fae5; color: #065f46; }
+    .form-error { background: #fee2e2; color: #991b1b; }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .lp-proof-bar {
+      background: var(--accent);
+      padding: 16px 0;
+    }
+    .lp-proof-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .lp-proof-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: .88rem;
+    }
+    .lp-proof-item svg { opacity: .9; }
+
+    /* ── BENEFITS ── */
+    .lp-benefits { padding: 72px 0; background: var(--light); }
+
+    .lp-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .lp-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .lp-benefit {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: 12px;
+      text-align: center;
+      border-bottom: 3px solid var(--accent);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .lp-benefit-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .lp-benefit h3 { font-weight: 700; color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
+    .lp-benefit p { color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+    /* ── MINI AVIS ── */
+    .lp-reviews { padding: 64px 0; background: var(--white); }
+
+    .lp-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .lp-review {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .lp-review-stars { color: var(--accent); margin-bottom: 10px; letter-spacing: 2px; }
+    .lp-review-text { font-size: .9rem; color: var(--muted); font-style: italic; margin-bottom: 16px; line-height: 1.6; }
+    .lp-review-author { font-weight: 700; font-size: .88rem; color: var(--primary); }
+    .lp-review-meta { font-size: .78rem; color: var(--muted); }
+
+    /* ── CTA FINAL ── */
+    .lp-cta-final {
+      background: var(--primary);
+      padding: 72px 0;
+      text-align: center;
+    }
+    .lp-cta-final h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .lp-cta-final p {
+      color: rgba(255,255,255,.7);
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    .lp-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 18px 42px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 20px rgba(232,160,32,.4);
+      transition: background .2s, transform .2s;
+    }
+    .lp-cta-btn:hover { background: #c8891a; transform: translateY(-2px); }
+
+    /* ── FOOTER MINIMAL ── */
+    .lp-footer {
+      background: #0d2238;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .lp-footer p { color: rgba(255,255,255,.35); font-size: .78rem; }
+
+    /* ── FLOATING CTA MOBILE ── */
+    .lp-float-cta {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 99;
+    }
+    .lp-float-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 18px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 8px 24px rgba(232,160,32,.5);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .lp-hero-inner { grid-template-columns: 1fr; }
+      .lp-hero-left { padding-bottom: 0; }
+      .lp-form-wrap { border-radius: 16px; }
+      .lp-grid-3 { grid-template-columns: 1fr; }
+      .lp-reviews-grid { grid-template-columns: 1fr; }
+      .lp-proof-inner { gap: 20px; }
+      .lp-float-cta { display: block; }
+      .lp-benefits { padding-bottom: 100px; }
+    }
+
+    @media (max-width: 540px) {
+      .lp-form-wrap { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="lp-header">
+    <div class="container">
+      <div class="lp-header-inner">
+        <div class="lp-logo">Olivier <span>Rénovation</span></div>
+        <a href="tel:+336XXXXXXXX" class="lp-tel-btn" id="header-tel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/>
+          </svg>
+          <span id="header-tel-txt">06 XX XX XX XX</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="lp-hero">
+    <div class="container">
+      <div class="lp-hero-inner">
+        <!-- Gauche : accroche -->
+        <div class="lp-hero-left">
+          <div class="lp-urgency">
+            <div class="lp-urgency-dot"></div>
+            Disponible en Normandie
+          </div>
+          <h1>
+            Votre peintre en<br/>
+            <em>Normandie</em><br/>
+            — Devis en 24h
+          </h1>
+          <p class="lp-hero-sub">
+            Peinture intérieure & extérieure, ravalement de façade.
+            Artisan qualifié, assurance décennale. Devis 100% gratuit, sans engagement.
+          </p>
+          <div class="lp-trust-badges">
+            <div class="lp-badge"><span>✓</span> Devis gratuit</div>
+            <div class="lp-badge"><span>✓</span> Assurance décennale</div>
+            <div class="lp-badge"><span>✓</span> +10 ans d'expérience</div>
+            <div class="lp-badge"><span>✓</span> Chantier propre garanti</div>
+          </div>
+          <div class="lp-stars-row">
+            <span class="lp-stars">★★★★★</span>
+            <span>5/5 — 47 avis Google</span>
+          </div>
+        </div>
+
+        <!-- Droite : formulaire -->
+        <div class="lp-form-wrap">
+          <div class="lp-form-title">Devis gratuit & rapide</div>
+          <div class="lp-form-sub">Réponse sous 24h — Aucun engagement</div>
+
+          <form id="lp-form" novalidate>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div class="form-group">
+                <label for="lp-prenom">Prénom *</label>
+                <input type="text" id="lp-prenom" name="prenom" required placeholder="Jean" />
+              </div>
+              <div class="form-group">
+                <label for="lp-tel">Téléphone *</label>
+                <input type="tel" id="lp-tel" name="telephone" required placeholder="06 XX XX XX XX" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lp-type">Type de travaux *</label>
+              <select id="lp-type" name="type_travaux" required>
+                <option value="">Sélectionnez votre projet...</option>
+                <option>Peinture intérieure</option>
+                <option>Peinture extérieure</option>
+                <option>Ravalement de façade</option>
+                <option>Papier peint / revêtements</option>
+                <option>Plusieurs prestations</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lp-message">Description rapide *</label>
+              <textarea id="lp-message" name="message" required placeholder="Ex : 3 pièces à repeindre, salon + chambre, murs blancs actuels..."></textarea>
+            </div>
+            <button type="submit" class="lp-submit">
+              Recevoir mon devis gratuit →
+            </button>
+            <div class="lp-guarantee">
+              🔒 Données confidentielles · Aucun démarchage
+            </div>
+            <div class="form-success" id="lp-success">
+              ✅ Super ! Nous vous recontactons dans les 24h pour votre devis.
+            </div>
+            <div class="form-error" id="lp-error">
+              ❌ Erreur d'envoi. Appelez-nous directement !
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROOF BAR ── -->
+  <div class="lp-proof-bar">
+    <div class="container">
+      <div class="lp-proof-inner">
+        <div class="lp-proof-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 14.93V17a1 1 0 00-2 0v-.07A8 8 0 014.07 11H4a1 1 0 000 2h.07A8 8 0 0011 19.93zm0-9.86V7a1 1 0 10-2 0v.07A8 8 0 004.07 13H4a1 1 0 100-2h.07A8 8 0 0011 4.07z"/></svg>
+          +200 chantiers réalisés
+        </div>
+        <div class="lp-proof-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          5/5 sur Google
+        </div>
+        <div class="lp-proof-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Assurance décennale
+        </div>
+        <div class="lp-proof-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Réponse sous 24h
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BENEFITS ── -->
+  <section class="lp-benefits">
+    <div class="container">
+      <h2 class="lp-section-title">Pourquoi choisir Olivier Rénovation ?</h2>
+      <div class="lp-grid-3">
+        <div class="lp-benefit">
+          <div class="lp-benefit-icon">🎯</div>
+          <h3>Devis précis et gratuit</h3>
+          <p>Déplacement gratuit en Normandie. Chaque poste détaillé et transparent avant tout engagement.</p>
+        </div>
+        <div class="lp-benefit">
+          <div class="lp-benefit-icon">🧹</div>
+          <h3>Chantier propre garanti</h3>
+          <p>Meubles bâchés, sols protégés. Nettoyage complet en fin de chantier, toujours.</p>
+        </div>
+        <div class="lp-benefit">
+          <div class="lp-benefit-icon">📅</div>
+          <h3>Délais respectés</h3>
+          <p>Un planning clair établi en amont. Votre chantier se déroule sans mauvaises surprises.</p>
+        </div>
+        <div class="lp-benefit">
+          <div class="lp-benefit-icon">🏆</div>
+          <h3>Matériaux haut de gamme</h3>
+          <p>Peintures professionnelles durables (Dulux, Tollens, V33). Résultats qui tiennent dans le temps.</p>
+        </div>
+        <div class="lp-benefit">
+          <div class="lp-benefit-icon">🛡️</div>
+          <h3>Assurance décennale</h3>
+          <p>Tous nos travaux sont couverts. Votre investissement est protégé sur le long terme.</p>
+        </div>
+        <div class="lp-benefit">
+          <div class="lp-benefit-icon">💬</div>
+          <h3>Conseil personnalisé</h3>
+          <p>Choix des couleurs, des finitions, des matériaux — nous vous guidons selon vos goûts et budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AVIS ── -->
+  <section class="lp-reviews">
+    <div class="container">
+      <h2 class="lp-section-title">Ils nous ont fait confiance</h2>
+      <div class="lp-reviews-grid" id="lp-reviews-grid">
+        <!-- Injecté par JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA FINAL ── -->
+  <section class="lp-cta-final">
+    <div class="container">
+      <h2>Prêt à démarrer votre projet ?</h2>
+      <p>Contactez-nous maintenant — Devis gratuit sous 24h, sans engagement.</p>
+      <a href="tel:+336XXXXXXXX" class="lp-cta-btn" id="final-tel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/>
+        </svg>
+        <span id="final-tel-txt">Appeler le 06 XX XX XX XX</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="lp-footer">
+    <div class="container">
+      <p id="lp-footer-copy">© 2025 Olivier Rénovation — Normandie · Artisan peintre</p>
+    </div>
+  </footer>
+
+  <!-- ── FLOAT MOBILE CTA ── -->
+  <div class="lp-float-cta">
+    <a href="tel:+336XXXXXXXX" id="float-tel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/>
+      </svg>
+      <span id="float-tel-txt">Appeler pour un devis gratuit</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const C = window.SITE_CONFIG;
+      if (!C) return;
+
+      // Téléphones
+      document.querySelectorAll('[href^="tel:"]').forEach(el => el.href = C.company.phoneHref);
+      document.querySelectorAll('#header-tel-txt').forEach(el => el.textContent = C.company.phone);
+      const finalTxt = document.getElementById('final-tel-txt');
+      if (finalTxt) finalTxt.textContent = `Appeler le ${C.company.phone}`;
+      const floatTxt = document.getElementById('float-tel-txt');
+      if (floatTxt) floatTxt.textContent = `Appeler le ${C.company.phone}`;
+
+      // Footer
+      const fc = document.getElementById('lp-footer-copy');
+      if (fc) fc.textContent = `© ${new Date().getFullYear()} ${C.company.name} — ${C.company.city} · Artisan peintre`;
+
+      // Avis
+      const rg = document.getElementById('lp-reviews-grid');
+      if (rg && C.reviews) {
+        rg.innerHTML = C.reviews.map(r => `
+          <div class="lp-review">
+            <div class="lp-review-stars">${'★'.repeat(r.stars)}</div>
+            <p class="lp-review-text">"${r.text}"</p>
+            <div class="lp-review-author">${r.name}</div>
+            <div class="lp-review-meta">${r.city} · ${r.date}</div>
+          </div>
+        `).join('');
+      }
+    });
+
+    // ── Formulaire ──────────────────────────────────
+    document.getElementById('lp-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const C = window.SITE_CONFIG;
+      const form = e.target;
+      const btn = form.querySelector('.lp-submit');
+      const successEl = document.getElementById('lp-success');
+      const errorEl = document.getElementById('lp-error');
+
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+      btn.textContent = 'Envoi…';
+      btn.disabled = true;
+
+      const data = Object.fromEntries(new FormData(form));
+
+      try {
+        if (C.form.useWebhook && C.form.webhookUrl) {
+          const res = await fetch(C.form.webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...data, source: 'olivier-renovation', page: 'landing' }),
+          });
+          if (!res.ok) throw new Error();
+        } else {
+          const subject = encodeURIComponent(`Devis landing — ${data.prenom}`);
+          const body = encodeURIComponent(
+            `Prénom: ${data.prenom}\nTél: ${data.telephone}\nType: ${data.type_travaux}\n\n${data.message}`
+          );
+          window.location.href = `mailto:${C.form.emailFallback}?subject=${subject}&body=${body}`;
+        }
+        successEl.style.display = 'block';
+        form.reset();
+
+        // Conversion tracking placeholder
+        // if (typeof gtag === 'function') gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/XXXXXXXX' });
+
+      } catch {
+        errorEl.style.display = 'block';
+      } finally {
+        btn.textContent = 'Recevoir mon devis gratuit →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

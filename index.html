@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olivier Rénovation — Peintre en Normandie | Devis Gratuit</title>
+  <meta name="description" content="Olivier Rénovation, artisan peintre en Normandie. Peinture intérieure & extérieure, ravalement de façade. Devis gratuit, travail soigné et garanti." />
+  <meta name="keywords" content="peintre Normandie, peinture intérieure extérieure, ravalement façade, artisan peintre" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Olivier Rénovation — Peintre en Normandie" />
+  <meta property="og:description" content="Artisan peintre en Normandie. Intérieur, extérieur, façades. Devis gratuit." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Config -->
+  <script src="config.js"></script>
+
+  <style>
+    /* ══════════════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:   #1B3A5C;
+      --accent:    #E8A020;
+      --light:     #F5F7FA;
+      --white:     #FFFFFF;
+      --text:      #2C3E50;
+      --muted:     #6B7280;
+      --radius:    12px;
+      --shadow:    0 4px 24px rgba(27,58,92,.12);
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Animations au scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ══════════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(27,58,92,.96);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      transition: box-shadow var(--transition);
+    }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.25); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.3px;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover { background: #c8891a !important; transform: scale(1.04); }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-burger span {
+      width: 26px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--primary);
+      padding: 12px 24px 20px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: rgba(255,255,255,.85);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-weight: 500;
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1B3A5C 0%, #0d2238 60%, #1B3A5C 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    /* Motif peinture subtil en fond */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(232,160,32,.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Bandes décoratives */
+    .hero-stripes {
+      position: absolute;
+      right: -60px; top: 0; bottom: 0;
+      width: 420px;
+      display: flex;
+      gap: 18px;
+      transform: skewX(-8deg);
+      opacity: .07;
+      pointer-events: none;
+    }
+    .hero-stripes div {
+      flex: 1;
+      background: var(--white);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,160,32,.2);
+      border: 1px solid rgba(232,160,32,.4);
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(232,160,32,.4);
+    }
+    .btn-primary:hover {
+      background: #c8891a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,160,32,.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 15px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid rgba(255,255,255,.4);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: left; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .85rem;
+      color: rgba(255,255,255,.65);
+      margin-top: 4px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.4);
+      font-size: .75rem;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll svg { width: 20px; height: 20px; }
+
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION COMMUNE
+    ══════════════════════════════════════════════ */
+    section { padding: 90px 0; }
+
+    .section-label {
+      display: inline-block;
+      background: rgba(232,160,32,.12);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-subtitle { margin: 0 auto; }
+
+    /* ══════════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════════ */
+    .services { background: var(--light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 36px 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      border-bottom: 3px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(27,58,92,.02), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(27,58,92,.15);
+      border-bottom-color: var(--accent);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      font-size: 2.6rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════════════
+       POURQUOI NOUS
+    ══════════════════════════════════════════════ */
+    .why {
+      background: var(--white);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .why-img-placeholder {
+      background: linear-gradient(135deg, #1B3A5C, #2d5986);
+      aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.4);
+      font-size: .9rem;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-img-placeholder svg { width: 48px; height: 48px; opacity: .4; }
+
+    /* Badge flottant */
+    .why-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--accent);
+      color: var(--white);
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(232,160,32,.5);
+    }
+    .why-badge-num { font-size: 1.8rem; line-height: 1; }
+    .why-badge-txt { font-size: .65rem; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; }
+
+    .why-points {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .why-point {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .why-point-icon {
+      width: 52px; height: 52px;
+      min-width: 52px;
+      background: rgba(232,160,32,.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .why-point h4 {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .why-point p { color: var(--muted); font-size: .9rem; }
+
+    /* ══════════════════════════════════════════════
+       RÉALISATIONS
+    ══════════════════════════════════════════════ */
+    .realisations { background: var(--light); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: linear-gradient(135deg, #1B3A5C, #2d5986);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .gallery-item:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(0,0,0,.25); }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255,255,255,.35);
+      font-size: .82rem;
+      text-align: center;
+      padding: 16px;
+    }
+    .gallery-item:first-child .gallery-placeholder { min-height: 360px; }
+    .gallery-placeholder:not(:first-child) { min-height: 160px; }
+    .gallery-placeholder svg { width: 36px; height: 36px; opacity: .3; }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(27,58,92,.85) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span {
+      color: var(--white);
+      font-weight: 600;
+      font-size: .9rem;
+    }
+
+    .gallery-caption {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* ══════════════════════════════════════════════
+       AVIS CLIENTS
+    ══════════════════════════════════════════════ */
+    .reviews { background: var(--primary); }
+
+    .reviews .section-title { color: var(--white); }
+    .reviews .section-label { background: rgba(232,160,32,.2); }
+    .reviews .section-subtitle { color: rgba(255,255,255,.65); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .review-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: background var(--transition), transform var(--transition);
+      position: relative;
+    }
+    .review-card:hover {
+      background: rgba(255,255,255,.12);
+      transform: translateY(-4px);
+    }
+
+    .review-quote {
+      font-size: 3rem;
+      color: var(--accent);
+      line-height: .5;
+      margin-bottom: 16px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .review-stars span { color: var(--accent); font-size: 1.1rem; }
+
+    .review-text {
+      color: rgba(255,255,255,.8);
+      font-size: .95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .review-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-weight: 700;
+      color: var(--white);
+      font-size: .95rem;
+    }
+    .review-meta {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 2px;
+    }
+
+    /* Google badge */
+    .google-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .72rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    /* ══════════════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════════════ */
+    .contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info { padding-top: 8px; }
+
+    .contact-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+    .contact-item-icon {
+      width: 52px; height: 52px;
+      min-width: 52px;
+      background: var(--light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .contact-item h4 { font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .contact-item p, .contact-item a { color: var(--muted); font-size: .95rem; }
+    .contact-item a:hover { color: var(--accent); }
+
+    .contact-cta-tel {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 18px 28px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 8px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .contact-cta-tel:hover {
+      background: #0d2238;
+      transform: translateY(-2px);
+    }
+
+    /* Formulaire */
+    .contact-form {
+      background: var(--light);
+      padding: 44px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 28px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .95rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      padding: 16px;
+      border: none;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #c8891a; transform: translateY(-2px); }
+
+    .form-notice {
+      text-align: center;
+      margin-top: 14px;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    /* Messages form */
+    .form-success, .form-error {
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 500;
+      margin-top: 16px;
+      display: none;
+    }
+    .form-success { background: #d1fae5; color: #065f46; }
+    .form-error { background: #fee2e2; color: #991b1b; }
+
+    /* ══════════════════════════════════════════════
+       BANDEAU CTA INTERMÉDIAIRE
+    ══════════════════════════════════════════════ */
+    .cta-band {
+      background: var(--accent);
+      padding: 56px 0;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .cta-band p {
+      color: rgba(255,255,255,.85);
+      margin-bottom: 32px;
+      font-size: 1.05rem;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: var(--accent);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    }
+
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
+    .footer {
+      background: #0d2238;
+      padding: 48px 0 28px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .nav-logo { font-size: 1.4rem; margin-bottom: 14px; display: block; }
+
+    .footer-desc {
+      color: rgba(255,255,255,.5);
+      font-size: .88rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.6);
+      font-size: .85rem;
+      transition: background var(--transition), color var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent); color: var(--white); }
+
+    .footer-col h5 {
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,.5);
+      font-size: .88rem;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,.35);
+      font-size: .8rem;
+    }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { max-width: 480px; margin: 0 auto; }
+
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info { order: 2; }
+      .contact-form { order: 1; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 64px 0; }
+      .hero-stats { gap: 24px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: span 2; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .contact-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">Olivier <span>Rénovation</span></a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#realisations">Réalisations</a></li>
+          <li><a href="#avis">Avis</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+        </ul>
+        <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#services">Services</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#avis">Avis clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" style="color: var(--accent); font-weight:700;">→ Devis gratuit</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="accueil">
+    <div class="hero-stripes">
+      <div></div><div></div><div></div><div></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>✦</span> Artisan peintre certifié — Normandie
+        </div>
+        <h1>
+          Votre intérieur mérite<br/>
+          une <em>finition parfaite</em>
+        </h1>
+        <p class="hero-desc">
+          Peinture intérieure & extérieure, ravalement de façade, papiers peints —
+          Olivier Rénovation transforme vos espaces avec soin et précision en Normandie.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Devis gratuit
+          </a>
+          <a href="tel:+336XXXXXXXX" class="btn-secondary" id="hero-tel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/></svg>
+            <span id="hero-tel-txt">Appeler maintenant</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">+10</div>
+            <div class="stat-label">ans d'expérience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">+200</div>
+            <div class="stat-label">chantiers réalisés</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5★</div>
+            <div class="stat-label">Note moyenne</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+      Découvrir
+    </div>
+  </section>
+
+  <!-- ══════════════ SERVICES ══════════════ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">Nos prestations</div>
+        <h2 class="section-title reveal">Tous vos travaux de peinture</h2>
+        <p class="section-subtitle reveal">Du simple rafraîchissement à la rénovation complète, nous intervenons pour tous vos projets en Normandie.</p>
+      </div>
+      <div class="services-grid" id="services-grid">
+        <!-- Généré par JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ POURQUOI NOUS ══════════════ -->
+  <section class="why" id="pourquoi">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-visual reveal-left">
+          <div class="why-img-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span>Photo chantier à ajouter</span>
+          </div>
+          <div class="why-badge">
+            <div class="why-badge-num">10+</div>
+            <div class="why-badge-txt">Années d'expérience</div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-label">Pourquoi nous choisir</div>
+          <h2 class="section-title">Un artisan sérieux,<br/>des résultats durables</h2>
+          <p class="section-subtitle">Nous mettons un point d'honneur à respecter vos délais, votre budget et la propreté de votre domicile.</p>
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-point-icon">🎯</div>
+              <div>
+                <h4>Devis précis et transparent</h4>
+                <p>Pas de mauvaises surprises. Chaque poste est détaillé clairement avant le début des travaux.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">🧹</div>
+              <div>
+                <h4>Chantier propre et protégé</h4>
+                <p>Meubles bâchés, sols protégés, nettoyage en fin de chantier. Votre intérieur respecté.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">📅</div>
+              <div>
+                <h4>Délais respectés</h4>
+                <p>Nous vous communiquons un calendrier précis et nous nous engageons à le tenir.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">🛡️</div>
+              <div>
+                <h4>Assurance décennale</h4>
+                <p>Travaux garantis et assurés. Votre investissement est protégé sur le long terme.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ RÉALISATIONS ══════════════ -->
+  <section class="realisations" id="realisations">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">Portfolio</div>
+        <h2 class="section-title reveal">Nos réalisations</h2>
+        <p class="section-subtitle reveal">Chaque chantier est unique. Découvrez quelques-uns de nos travaux récents en Normandie.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-placeholder" style="min-height:360px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span>Salon — peinture intérieure<br/>Remplacer par votre photo</span>
+          </div>
+          <div class="gallery-overlay"><span>Salon — peinture intérieure</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder" style="min-height:168px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span>Façade — ravalement</span>
+          </div>
+          <div class="gallery-overlay"><span>Façade — ravalement</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder" style="min-height:168px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span>Chambre — papier peint</span>
+          </div>
+          <div class="gallery-overlay"><span>Chambre — papier peint</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder" style="min-height:168px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span>Extérieur — volets & portail</span>
+          </div>
+          <div class="gallery-overlay"><span>Extérieur — volets & portail</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder" style="min-height:168px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span>Cuisine — rénovation</span>
+          </div>
+          <div class="gallery-overlay"><span>Cuisine — rénovation</span></div>
+        </div>
+      </div>
+      <p class="gallery-caption reveal">
+        💡 <em>Remplacez les placeholders par vos photos de chantier (remplacez les divs .gallery-placeholder par des balises &lt;img&gt;)</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════ CTA BAND ══════════════ -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>Votre projet en Normandie ? Parlons-en !</h2>
+      <p>Devis gratuit, réponse sous 24h. Aucun engagement.</p>
+      <a href="#contact" class="btn-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/></svg>
+        Demander un devis
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════════ AVIS ══════════════ -->
+  <section class="reviews" id="avis">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">Témoignages</div>
+        <h2 class="section-title reveal">Ce que disent nos clients</h2>
+        <p class="section-subtitle reveal">Plus de 200 clients satisfaits en Normandie. Voici quelques avis vérifiés.</p>
+      </div>
+      <div class="reviews-grid" id="reviews-grid">
+        <!-- Généré par JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal">Contact</div>
+        <h2 class="section-title reveal">Demandez votre devis gratuit</h2>
+        <p class="section-subtitle reveal">Déplacement gratuit en Normandie. Réponse sous 24h.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <h4>Téléphone</h4>
+              <p><a href="tel:+336XXXXXXXX" id="contact-tel">06 XX XX XX XX</a></p>
+              <p style="font-size:.82rem; margin-top:4px; color:#9ca3af">Lun–Ven 8h–18h / Sam 8h–12h</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:contact@olivier-renovation.fr" id="contact-email">contact@olivier-renovation.fr</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <h4>Zone d'intervention</h4>
+              <p>Normandie et alentours</p>
+            </div>
+          </div>
+          <a href="tel:+336XXXXXXXX" class="contact-cta-tel" id="contact-cta-tel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.22.49 2.55.76 3.98.76a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.44.27 2.77.76 3.99a1 1 0 01-.27 1.1l-2.17 2.2z"/></svg>
+            <span id="contact-tel-display">Appeler le 06 XX XX XX XX</span>
+          </a>
+        </div>
+        <div class="contact-form reveal-right">
+          <h3>Décrivez votre projet</h3>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-prenom">Prénom *</label>
+                <input type="text" id="f-prenom" name="prenom" required placeholder="Jean" />
+              </div>
+              <div class="form-group">
+                <label for="f-nom">Nom *</label>
+                <input type="text" id="f-nom" name="nom" required placeholder="Dupont" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-tel">Téléphone *</label>
+                <input type="tel" id="f-tel" name="telephone" required placeholder="06 XX XX XX XX" />
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email</label>
+                <input type="email" id="f-email" name="email" placeholder="jean@exemple.fr" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-type">Type de travaux *</label>
+              <select id="f-type" name="type_travaux" required>
+                <option value="">Sélectionnez...</option>
+                <option>Peinture intérieure</option>
+                <option>Peinture extérieure</option>
+                <option>Ravalement de façade</option>
+                <option>Papier peint / revêtements</option>
+                <option>Plusieurs prestations</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-message">Description du projet *</label>
+              <textarea id="f-message" name="message" required placeholder="Décrivez votre projet : surface approximative, nombre de pièces, état actuel des murs..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              Envoyer ma demande de devis →
+            </button>
+            <p class="form-notice">🔒 Vos données sont confidentielles. Devis 100% gratuit & sans engagement.</p>
+            <div class="form-success" id="form-success">
+              ✅ Votre demande a bien été envoyée ! Nous vous recontactons sous 24h.
+            </div>
+            <div class="form-error" id="form-error">
+              ❌ Une erreur est survenue. Appelez-nous directement ou réessayez.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="nav-logo">Olivier <span>Rénovation</span></span>
+          <p class="footer-desc">Artisan peintre qualifié en Normandie. Peinture intérieure & extérieure, ravalement, décoration. Devis gratuit.</p>
+          <div class="footer-social" id="footer-social"></div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul class="footer-links">
+            <li><a href="#services">Peinture intérieure</a></li>
+            <li><a href="#services">Peinture extérieure</a></li>
+            <li><a href="#services">Ravalement de façade</a></li>
+            <li><a href="#services">Papier peint</a></li>
+            <li><a href="#services">Petits travaux</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-links">
+            <li><a href="#contact">Demander un devis</a></li>
+            <li><a href="tel:+336XXXXXXXX" id="footer-tel">06 XX XX XX XX</a></li>
+            <li><a href="mailto:contact@olivier-renovation.fr" id="footer-email">Email</a></li>
+            <li><a href="#avis">Avis clients</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p id="footer-copy">© 2025 Olivier Rénovation — Normandie</p>
+        <p>Artisan peintre — Devis gratuit</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════ SCRIPTS ══════════════ -->
+  <script>
+    // ── Injection des données config ──────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      const C = window.SITE_CONFIG;
+      if (!C) return;
+
+      // Téléphone
+      const telLinks = document.querySelectorAll('[href^="tel:"]');
+      telLinks.forEach(el => el.href = C.company.phoneHref);
+      document.querySelectorAll('#hero-tel-txt, #contact-tel, #footer-tel').forEach(el => {
+        if (el) el.textContent = C.company.phone;
+      });
+      const ctelDisplay = document.getElementById('contact-tel-display');
+      if (ctelDisplay) ctelDisplay.textContent = `Appeler le ${C.company.phone}`;
+
+      // Email
+      document.querySelectorAll('#contact-email, #footer-email').forEach(el => {
+        if (el) { el.textContent = C.company.email; el.href = `mailto:${C.company.email}`; }
+      });
+
+      // Footer
+      const copy = document.getElementById('footer-copy');
+      if (copy) copy.textContent = `© ${new Date().getFullYear()} ${C.company.name} — ${C.company.city}`;
+
+      // Services
+      const sg = document.getElementById('services-grid');
+      if (sg && C.services) {
+        sg.innerHTML = C.services.map((s, i) => `
+          <div class="service-card reveal" style="transition-delay:${i * .08}s">
+            <span class="service-icon">${s.icon}</span>
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+          </div>
+        `).join('');
+      }
+
+      // Avis
+      const rg = document.getElementById('reviews-grid');
+      if (rg && C.reviews) {
+        rg.innerHTML = C.reviews.map((r, i) => {
+          const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+          const initials = r.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+          return `
+            <div class="review-card reveal" style="transition-delay:${i * .1}s">
+              <div class="google-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                Google
+              </div>
+              <div class="review-quote">"</div>
+              <div class="review-stars">${[...stars].map(s => `<span>${s}</span>`).join('')}</div>
+              <p class="review-text">${r.text}</p>
+              <div class="review-author">
+                <div class="review-avatar">${initials}</div>
+                <div>
+                  <div class="review-name">${r.name}</div>
+                  <div class="review-meta">${r.city} · ${r.date}</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Réseaux sociaux footer
+      const fs = document.getElementById('footer-social');
+      if (fs && C.social) {
+        const links = [
+          { key: 'facebook', icon: 'f', label: 'Facebook' },
+          { key: 'instagram', icon: '▣', label: 'Instagram' },
+          { key: 'google', icon: 'G', label: 'Google' },
+        ];
+        fs.innerHTML = links
+          .filter(l => C.social[l.key])
+          .map(l => `<a href="${C.social[l.key]}" target="_blank" rel="noopener" title="${l.label}">${l.icon}</a>`)
+          .join('');
+      }
+
+      // Déclencher les observers après génération du contenu
+      initObservers();
+    });
+
+    // ── Scroll observer (animations reveal) ──────────
+    function initObservers() {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+    }
+
+    // ── Navbar scroll ────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Burger menu ──────────────────────────────────
+    const burger = document.getElementById('burger');
+    const navMobile = document.getElementById('nav-mobile');
+    burger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+
+    // ── Formulaire de contact ────────────────────────
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const C = window.SITE_CONFIG;
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      const successEl = document.getElementById('form-success');
+      const errorEl = document.getElementById('form-error');
+
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true;
+
+      const data = Object.fromEntries(new FormData(form));
+
+      try {
+        if (C.form.useWebhook && C.form.webhookUrl) {
+          const res = await fetch(C.form.webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...data, source: 'olivier-renovation', page: 'index' }),
+          });
+          if (!res.ok) throw new Error('Webhook error');
+        } else {
+          // Fallback mailto
+          const subject = encodeURIComponent(`Demande de devis — ${data.prenom} ${data.nom}`);
+          const body = encodeURIComponent(
+            `Nom: ${data.prenom} ${data.nom}\nTél: ${data.telephone}\nEmail: ${data.email}\nType: ${data.type_travaux}\n\n${data.message}`
+          );
+          window.location.href = `mailto:${C.form.emailFallback}?subject=${subject}&body=${body}`;
+        }
+        successEl.style.display = 'block';
+        form.reset();
+      } catch {
+        errorEl.style.display = 'block';
+      } finally {
+        btn.textContent = 'Envoyer ma demande de devis →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
